@@ -1,10 +1,15 @@
-package org.danila.vereshchakov.models.entities;
+package org.yab.lemonsky.models.entities;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  * Created by Danila on 05.06.2016.
  */
+@Entity
 public class Account {
 
+    @Id
     private String login;
 
     private String password;

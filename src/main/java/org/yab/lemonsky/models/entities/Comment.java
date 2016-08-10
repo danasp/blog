@@ -1,18 +1,28 @@
-package org.danila.vereshchakov.models.entities;
+package org.yab.lemonsky.models.entities;
 
-import java.time.LocalDateTime;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import java.util.Date;
 
 /**
  * Created by Danila on 05.06.2016.
  */
 
+@Entity
+@SequenceGenerator(name = "seq_comment_generator", sequenceName = "comment_generator", allocationSize = 1)
 public class Comment {
+
+    @Id
+    @GeneratedValue(generator = "seq_comment_generator")
+    private Long id;
 
     private Account author;
 
     private String text;
 
-    private LocalDateTime date;
+    private Date date;
 
     private Long like;
 
@@ -32,11 +42,11 @@ public class Comment {
         this.text = text;
     }
 
-    public LocalDateTime getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
