@@ -1,13 +1,23 @@
-package org.danila.vereshchakov.models.entities;
+package org.danila.lemonsky.models.entities;
 
-import java.time.LocalDateTime;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import java.util.Date;
 import java.util.List;
 
 /**
  * Created by Danila on 04.06.2016.
  */
 
+@Entity
+@SequenceGenerator(name = "seq_feed_generator", sequenceName = "feed_generator", allocationSize = 1)
 public class Feed {
+
+    @Id
+    @GeneratedValue(generator = "seq_feed_generator")
+    private Long id;
 
     private Account author;
 
@@ -15,7 +25,7 @@ public class Feed {
 
     private String text;
 
-    private LocalDateTime date;
+    private Date date;
 
     private List<Comment> comments;
 
@@ -43,11 +53,11 @@ public class Feed {
         this.text = text;
     }
 
-    public LocalDateTime getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

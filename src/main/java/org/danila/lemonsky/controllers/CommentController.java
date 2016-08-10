@@ -1,6 +1,6 @@
-package org.danila.vereshchakov.controllers;
+package org.danila.lemonsky.controllers;
 
-import org.danila.vereshchakov.models.entities.Comment;
+import org.danila.lemonsky.models.entities.Comment;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
