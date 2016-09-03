@@ -12,7 +12,7 @@
     <properties>
         <jdk.version>1.8</jdk.version>
         <wicket.version>7.4.0</wicket.version>
-        <postgresql.version>9.4.1208</postgresql.version>
+        <postgresql.version>9.3-1102-jdbc4</postgresql.version>
         <spring.version>4.2.6.RELEASE</spring.version>
         <hibernate.version>5.2.0.Final</hibernate.version>
     </properties>

@@ -1,9 +1,6 @@
 package org.yab.lemonsky.models.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -18,12 +15,14 @@ public class Comment {
     @GeneratedValue(generator = "seq_comment_generator")
     private Long id;
 
+    @Transient
     private Account author;
 
     private String text;
 
     private Date date;
 
+    @Transient
     private Long like;
 
     public Account getAuthor() {

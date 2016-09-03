@@ -1,9 +1,6 @@
 package org.yab.lemonsky.models.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
@@ -19,6 +16,7 @@ public class Feed {
     @GeneratedValue(generator = "seq_feed_generator")
     private Long id;
 
+    @Transient
     private Account author;
 
     private String title;
@@ -27,6 +25,7 @@ public class Feed {
 
     private Date date;
 
+    @Transient
     private List<Comment> comments;
 
     public Account getAuthor() {
