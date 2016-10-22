@@ -25,6 +25,4 @@
         </property>
     </bean>
 -->
-
-    <import resource="applicationContext-hibernate.xml"/>
 </beans>

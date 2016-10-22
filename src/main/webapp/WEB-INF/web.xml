@@ -26,8 +26,7 @@
 
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:applicationContext-base.xml</param-value>
-        <!--<param-value>classpath:*.xml</param-value>-->
+        <param-value>classpath:applicationContext*</param-value>
     </context-param>
 
     <!--TODO: Uncomment before deployment -->
