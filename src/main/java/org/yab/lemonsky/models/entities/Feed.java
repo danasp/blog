@@ -1,6 +1,7 @@
 package org.yab.lemonsky.models.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -10,18 +11,18 @@ import java.util.List;
 
 @Entity
 @SequenceGenerator(name = "seq_feed_generator", sequenceName = "feed_generator", allocationSize = 1)
-public class Feed {
+public class Feed implements Serializable {
 
     @Id
     @GeneratedValue(generator = "seq_feed_generator")
     private Long id;
 
-    @Transient
+    @ManyToOne
     private Account author;
 
     private String title;
 
-    private String text;
+    private String feedText;
 
     private Date date;
 
@@ -44,12 +45,12 @@ public class Feed {
         this.title = title;
     }
 
-    public String getText() {
-        return text;
+    public String getFeedText() {
+        return feedText;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setFeedText(String feedText) {
+        this.feedText = feedText;
     }
 
     public Date getDate() {
@@ -73,7 +74,7 @@ public class Feed {
         final StringBuilder sb = new StringBuilder("Feed{");
         sb.append("author=").append(author);
         sb.append(", title='").append(title).append('\'');
-        sb.append(", text='").append(text).append('\'');
+        sb.append(", text='").append(feedText).append('\'');
         sb.append(", date=").append(date);
         sb.append(", comments=").append(comments);
         sb.append('}');

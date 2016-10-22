@@ -1,16 +1,19 @@
 package org.yab.lemonsky.models.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by Danila on 05.06.2016.
  */
 @Entity
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = "username"))
 public class Account {
 
     @Id
-    private String login;
+    @GeneratedValue
+    private Long id;
+
+    private String username;
 
     private String password;
 
@@ -20,12 +23,31 @@ public class Account {
 
     private String email;
 
-    public String getLogin() {
-        return login;
+    public Account() {
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public Account(String username, String password, String firstName, String lastName, String email) {
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -63,7 +85,7 @@ public class Account {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Account{");
-        sb.append("login='").append(login).append('\'');
+        sb.append("username='").append(username).append('\'');
         sb.append(", password='").append(password).append('\'');
         sb.append(", firstName='").append(firstName).append('\'');
         sb.append(", lastName='").append(lastName).append('\'');

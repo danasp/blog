@@ -11,8 +11,4 @@ import java.util.List;
 
 @Repository
 public interface FeedRepository {
-
-    List<Feed> getAllAccounts();
-    Feed getFeedById(Long id);
-    void saveFeed(Feed feed);
 }

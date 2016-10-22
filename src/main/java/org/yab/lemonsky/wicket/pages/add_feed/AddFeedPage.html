@@ -1,0 +1,37 @@
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.3-strict.dtd">
+<body>
+<wicket:extend>
+    <form action="#" wicket:id="feedForm">
+        <table>
+            <tr>
+                <td>
+                    <span wicket:id="titleLable"/>
+                </td>
+                <td>
+                    <input wicket:id="title"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span wicket:id="feedTextLable"/>
+                </td>
+                <td>
+                    <textarea wicket:id="feedText" rows="10" cols="40"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit"/>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <span wicket:id="feedback"/>
+</wicket:extend>
+</body>
+</html>
