@@ -15,12 +15,12 @@ public class Comment {
     @GeneratedValue(generator = "seq_comment_generator")
     private Long id;
 
-    @Transient
+    @ManyToOne
     private Account author;
 
     private String text;
 
-    private Date date;
+    private Date date = new Date();
 
     @Transient
     private Long like;

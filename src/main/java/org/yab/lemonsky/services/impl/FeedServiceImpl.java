@@ -1,5 +1,6 @@
 package org.yab.lemonsky.services.impl;
 
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,5 +40,13 @@ public class FeedServiceImpl implements FeedService {
         entityManager.merge(feed);
         feed.setAuthor(entityManager.getReference(Account.class, feed.getAuthor().getId()));
         entityManager.flush();
+    }
+
+    @Transactional
+    @Override
+    public Feed initComments(Feed feed) {
+        Feed fromDb = getFeedById(feed.getId());
+        Hibernate.initialize(fromDb.getComments());
+        return fromDb;
     }
 }

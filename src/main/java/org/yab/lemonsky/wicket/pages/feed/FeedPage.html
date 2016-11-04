@@ -1,0 +1,35 @@
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.3-strict.dtd">
+<body>
+<wicket:extend>
+    <div id="title">
+        <span wicket:id="title"/>
+    </div>
+    <div id="content">
+        <span wicket:id="content"/>
+    </div>
+    <div id="author">
+        <span wicket:id="author"/>
+    </div>
+
+    <div class="addComment">
+        <div wicket:id="addCommentPanel"/>
+    </div>
+
+    <div class="comments">
+        <br/>
+         Number of comments: <span wicket:id="numberOfComment"/>
+        <br/>
+        <div wicket:id="comments">
+            <div id=commentAuthor wicket:id="commentAuthor"/>
+            <div id=commentText wicket:id="commentText"/>
+            <div id=commentDate wicket:id="commentDate"/>
+        </div>
+    </div>
+</wicket:extend>
+</body>
+</html>

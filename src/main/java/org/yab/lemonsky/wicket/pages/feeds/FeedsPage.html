@@ -7,15 +7,20 @@
 <body>
 <wicket:extend>
     <table>
-        <tr wicket:id = "feeds">
-            <td wicket:id = "title"/>
-            <td wicket:id = "author"/>
-            <td wicket:id = "date"/>
+        <tr wicket:id="feeds">
+            <td>
+                <a wicket:id="feedLink" href="#">
+                    <span wicket:id="title"/>
+                </a>
+            </td>
+            <td wicket:id="author"/>
+            <td wicket:id="date"/>
+
         </tr>
         <tr>
-            <td wicket:id = "pageNav">
-                <a wicket:id = "pageLink">
-                    <span wicket:id = "pageNumber" />
+            <td wicket:id="pageNav">
+                <a wicket:id="pageLink">
+                    <span wicket:id="pageNumber"/>
                 </a>
             </td>
         </tr>

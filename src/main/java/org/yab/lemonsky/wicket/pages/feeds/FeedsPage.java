@@ -10,9 +10,11 @@ import org.apache.wicket.markup.repeater.data.ListDataProvider;
 import org.apache.wicket.model.PropertyModel;
 import org.wicketstuff.annotation.mount.MountPath;
 import org.yab.lemonsky.models.entities.Feed;
+import org.yab.lemonsky.wicket.components.link.FeedPageLink;
 import org.yab.lemonsky.wicket.pages.BasePage;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -21,7 +23,7 @@ import java.util.List;
  */
 @MountPath("feeds")
 public class FeedsPage extends BasePage {
-    private final long ITEMS_PER_PAGE = 2;
+    private final long ITEMS_PER_PAGE = 10;
     public FeedsPage() {
         super();
         init();
@@ -29,6 +31,7 @@ public class FeedsPage extends BasePage {
 
     private void init() {
         List<Feed> feeds = feedService.getAllFeeds();
+        Collections.reverse(feeds);
 
         ListDataProvider<Feed> listDataProvider = new ListDataProvider<>(feeds);
         DataView<Feed> dataView = new DataView<Feed>("feeds", listDataProvider, ITEMS_PER_PAGE) {
@@ -36,21 +39,13 @@ public class FeedsPage extends BasePage {
             protected void populateItem(Item<Feed> item) {
                 Feed feed = item.getModelObject();
 
-                item.add(new Label("title", new PropertyModel<>(feed, "title")));
+                FeedPageLink feedLink = new FeedPageLink("feedLink", feed);
+                feedLink.add(new Label("title", new PropertyModel<>(feed, "title")));
+                item.add(feedLink);
                 item.add(new Label("author", new PropertyModel<>(feed, "author.username")));
                 item.add(new Label("date", new PropertyModel<>(feed, "date")));
             }
         };
-        /*ListView<Feed> listView = new ListView<Feed>("feeds", feeds) {
-            @Override
-            protected void populateItem(ListItem<Feed> listItem) {
-                Feed feed = listItem.getModelObject();
-                listItem.add(new Label("title", new PropertyModel<>(feed, "title")));
-                listItem.add(new Label("author", new PropertyModel<>(feed, "author.username")));
-                listItem.add(new Label("date", new PropertyModel<>(feed, "date")));
-            }
-        };*/
-
         add(dataView);
         add(new PagingNavigation("pageNav", dataView));
     }

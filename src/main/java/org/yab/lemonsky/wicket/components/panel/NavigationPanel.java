@@ -3,6 +3,8 @@ package org.yab.lemonsky.wicket.components.panel;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.yab.lemonsky.wicket.pages.Index;
+import org.yab.lemonsky.wicket.pages.add_feed.AddFeedPage;
+import org.yab.lemonsky.wicket.pages.feeds.FeedsPage;
 
 /**
  * User: Danila Vereshchakov
@@ -19,14 +21,14 @@ public class NavigationPanel extends Panel {
         add(new Link("link1") {
             @Override
             public void onClick() {
-                setResponsePage(Index.class);
+                setResponsePage(FeedsPage.class);
             }
         });
 
         add(new Link("link2") {
             @Override
             public void onClick() {
-                setResponsePage(Index.class);
+                setResponsePage(AddFeedPage.class);
             }
         });
 

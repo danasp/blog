@@ -2,6 +2,7 @@ package org.yab.lemonsky.models.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -22,11 +23,17 @@ public class Feed implements Serializable {
 
     private String title;
 
+    @Column(columnDefinition = "text")
     private String feedText;
 
     private Date date;
 
-    @Transient
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "feed_comments",
+            joinColumns = @JoinColumn(name = "feed"),
+            inverseJoinColumns = @JoinColumn(name = "comment")
+    )
     private List<Comment> comments;
 
     public Account getAuthor() {
@@ -67,6 +74,14 @@ public class Feed implements Serializable {
 
     public void setComments(List<Comment> comments) {
         this.comments = comments;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     @Override

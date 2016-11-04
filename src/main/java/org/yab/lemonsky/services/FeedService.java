@@ -12,4 +12,5 @@ public interface FeedService {
     List<Feed> getAllFeeds();
     Feed getFeedById(Long id);
     void saveFeed(Feed feed);
+    Feed initComments(Feed feed);
 }
