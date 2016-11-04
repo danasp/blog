@@ -119,6 +119,21 @@
                     <target>${jdk.version}</target>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>9.2.2.v20140723</version>
+                <configuration>
+                    <webApp>
+                        <contextPath>/</contextPath>
+                        <war>${project.build.directory}/${project.build.finalName}.war</war>
+                    </webApp>
+                    <stopPort>9966</stopPort>
+                    <stopKey>jetty-stop</stopKey>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 
