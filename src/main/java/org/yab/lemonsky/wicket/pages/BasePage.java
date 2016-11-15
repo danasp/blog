@@ -3,7 +3,7 @@ package org.yab.lemonsky.wicket.pages;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.spring.injection.annot.SpringBean;
-import org.yab.lemonsky.services.FeedService;
+import org.yab.lemonsky.repository.FeedRepository;
 import org.yab.lemonsky.wicket.components.panel.NavigationPanel;
 
 /**
@@ -13,7 +13,7 @@ import org.yab.lemonsky.wicket.components.panel.NavigationPanel;
 public class BasePage extends WebPage {
 
     @SpringBean
-    protected FeedService feedService;
+    protected FeedRepository feedRepository;
 
     public BasePage() {
         super();

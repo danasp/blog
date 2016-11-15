@@ -9,7 +9,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.yab.lemonsky.models.entities.Account;
 import org.yab.lemonsky.models.entities.Comment;
 import org.yab.lemonsky.models.entities.Feed;
-import org.yab.lemonsky.services.FeedService;
+import org.yab.lemonsky.repository.FeedRepository;
 import org.yab.lemonsky.wicket.pages.feed.FeedPage;
 
 /**
@@ -19,7 +19,7 @@ import org.yab.lemonsky.wicket.pages.feed.FeedPage;
 public class AddCommentForm extends Form<Comment> {
 
     @SpringBean
-    private FeedService feedService;
+    private FeedRepository feedRepository;
 
     private Feed feed;
     private Comment comment;
@@ -44,7 +44,7 @@ public class AddCommentForm extends Form<Comment> {
     protected void onSubmit() {
         Comment comment = this.getModelObject();
         feed.getComments().add(comment);
-        feedService.saveFeed(feed);
+        feedRepository.saveFeed(feed);
         setResponsePage(new FeedPage(feed));
     }
 }

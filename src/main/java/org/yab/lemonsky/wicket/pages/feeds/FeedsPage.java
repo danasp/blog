@@ -1,8 +1,6 @@
 package org.yab.lemonsky.wicket.pages.feeds;
 
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.list.ListItem;
-import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.navigation.paging.PagingNavigation;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.data.DataView;
@@ -13,7 +11,6 @@ import org.yab.lemonsky.models.entities.Feed;
 import org.yab.lemonsky.wicket.components.link.FeedPageLink;
 import org.yab.lemonsky.wicket.pages.BasePage;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -30,7 +27,7 @@ public class FeedsPage extends BasePage {
     }
 
     private void init() {
-        List<Feed> feeds = feedService.getAllFeeds();
+        List<Feed> feeds = feedRepository.getAllFeeds();
         Collections.reverse(feeds);
 
         ListDataProvider<Feed> listDataProvider = new ListDataProvider<>(feeds);

@@ -1,12 +1,13 @@
-package org.yab.lemonsky.services.impl;
+package org.yab.lemonsky.repository.impl;
 
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.yab.lemonsky.models.entities.Account;
 import org.yab.lemonsky.models.entities.Feed;
-import org.yab.lemonsky.services.FeedService;
+import org.yab.lemonsky.repository.FeedRepository;
 
 import javax.persistence.EntityManager;
 import java.util.Collections;
@@ -17,8 +18,8 @@ import java.util.List;
  * Date: 22.10.2016
  */
 
-@Service
-public class FeedServiceImpl implements FeedService {
+@Repository
+public class FeedRepositoryImpl implements FeedRepository {
 
     @Autowired
     EntityManager entityManager;

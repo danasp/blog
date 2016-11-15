@@ -5,11 +5,10 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextArea;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.CompoundPropertyModel;
-import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.yab.lemonsky.models.entities.Account;
 import org.yab.lemonsky.models.entities.Feed;
-import org.yab.lemonsky.services.FeedService;
+import org.yab.lemonsky.repository.FeedRepository;
 import org.yab.lemonsky.wicket.pages.feeds.FeedsPage;
 
 import java.util.Date;
@@ -20,15 +19,15 @@ import java.util.Date;
  */
 public class AddFeedForm extends Form<Feed> {
 
-    private FeedService feedService;
+    private FeedRepository feedRepository;
 
     public AddFeedForm(String id) {
         super(id);
     }
 
-    public AddFeedForm(String id, Feed feed, FeedService feedService) {
+    public AddFeedForm(String id, Feed feed, FeedRepository feedRepository) {
         super(id);
-        this.feedService = feedService;
+        this.feedRepository = feedRepository;
 
         Account account = new Account("test", "test", "test", "test", "test@test.test");
         account.setId(1L);
@@ -46,7 +45,7 @@ public class AddFeedForm extends Form<Feed> {
     protected void onSubmit() {
         Feed feed = this.getModelObject();
         feed.setDate(new Date());
-        feedService.saveFeed(feed);
+        feedRepository.saveFeed(feed);
         setResponsePage(FeedsPage.class);
     }
 

@@ -21,7 +21,7 @@ public class FeedPage extends BasePage {
     private Feed feed;
 
     public FeedPage(Feed feed) {
-        this.feed = feedService.initComments(feed);
+        this.feed = feedRepository.initComments(feed);
         init();
     }
 
