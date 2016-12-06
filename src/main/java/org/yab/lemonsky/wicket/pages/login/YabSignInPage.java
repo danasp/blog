@@ -1,4 +1,4 @@
-package org.yab.lemonsky.wicket.pages.signin;
+package org.yab.lemonsky.wicket.pages.login;
 
 import org.apache.wicket.authroles.authentication.pages.SignInPage;
 import org.apache.wicket.request.mapper.parameter.PageParameters;

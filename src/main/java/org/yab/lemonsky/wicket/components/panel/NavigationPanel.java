@@ -5,6 +5,8 @@ import org.apache.wicket.markup.html.panel.Panel;
 import org.yab.lemonsky.wicket.pages.Index;
 import org.yab.lemonsky.wicket.pages.add_feed.AddFeedPage;
 import org.yab.lemonsky.wicket.pages.feeds.FeedsPage;
+import org.yab.lemonsky.wicket.pages.login.YabSignInPage;
+import org.yab.lemonsky.wicket.security.YabAuthenticationSession;
 
 /**
  * User: Danila Vereshchakov
@@ -38,5 +40,14 @@ public class NavigationPanel extends Panel {
                 setResponsePage(Index.class);
             }
         });
+
+        boolean isLogined = YabAuthenticationSession.get().isSignedIn();
+        add(new SignOutPanel("signOutPanel").setVisible(isLogined));
+        add(new Link("login") {
+            @Override
+            public void onClick() {
+                setResponsePage(YabSignInPage.class);
+            }
+        }.setVisible(!isLogined));
     }
 }

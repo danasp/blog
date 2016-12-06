@@ -17,6 +17,8 @@ public class YabAuthenticationSession extends AuthenticatedWebSession {
     @SpringBean(name = "authRepository")
     AuthRepository authRepository;
 
+    String username;
+
     public YabAuthenticationSession(Request request) {
         super(request);
         Injector.get().inject(this);
@@ -24,7 +26,11 @@ public class YabAuthenticationSession extends AuthenticatedWebSession {
 
     @Override
     protected boolean authenticate(String username, String password) {
-        return authRepository.signIn(username, password);
+        boolean isAuthenticated = authRepository.yabSignIn(username, password);
+        if (isAuthenticated) {
+            this.username = username;
+        }
+        return isAuthenticated;
     }
 
     @Override

@@ -23,6 +23,8 @@ public class Account {
 
     private String email;
 
+    private String roles;
+
     public Account() {
     }
 
@@ -82,14 +84,24 @@ public class Account {
         this.email = email;
     }
 
+    public String getRoles() {
+        return roles;
+    }
+
+    public void setRoles(String roles) {
+        this.roles = roles;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Account{");
-        sb.append("username='").append(username).append('\'');
+        sb.append("id=").append(id);
+        sb.append(", username='").append(username).append('\'');
         sb.append(", password='").append(password).append('\'');
         sb.append(", firstName='").append(firstName).append('\'');
         sb.append(", lastName='").append(lastName).append('\'');
         sb.append(", email='").append(email).append('\'');
+        sb.append(", roles=").append(roles);
         sb.append('}');
         return sb.toString();
     }

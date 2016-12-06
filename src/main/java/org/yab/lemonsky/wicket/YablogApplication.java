@@ -3,16 +3,14 @@ package org.yab.lemonsky.wicket;
 import org.apache.wicket.Page;
 import org.apache.wicket.authroles.authentication.AbstractAuthenticatedWebSession;
 import org.apache.wicket.authroles.authentication.AuthenticatedWebApplication;
-import org.apache.wicket.authroles.authentication.pages.SignInPage;
-import org.apache.wicket.bean.validation.BeanValidationConfiguration;
 import org.apache.wicket.markup.html.WebPage;
-import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
-//import org.wicketstuff.annotation.scan.AnnotatedMountScanner;
 import org.wicketstuff.annotation.scan.AnnotatedMountScanner;
 import org.yab.lemonsky.wicket.pages.Index;
-import org.yab.lemonsky.wicket.pages.signin.YabSignInPage;
+import org.yab.lemonsky.wicket.pages.login.YabSignInPage;
 import org.yab.lemonsky.wicket.security.YabAuthenticationSession;
+
+//import org.wicketstuff.annotation.scan.AnnotatedMountScanner;
 
 /**
  * User: Danila Vereshchakov
