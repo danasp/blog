@@ -12,7 +12,9 @@ import org.yab.lemonsky.models.entities.Feed;
 import org.yab.lemonsky.wicket.components.link.FeedPageLink;
 import org.yab.lemonsky.wicket.pages.BasePage;
 
+import java.text.SimpleDateFormat;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -39,16 +41,21 @@ public class FeedsPage extends BasePage {
                 String feedText = feed.getFeedText();
                 String displayedContent = feedText.length() > 500 ? feedText.substring(0, 501) : feedText;
 
+                String feedDate = formatDate(feed.getDate());
+
                 FeedPageLink feedLink = new FeedPageLink("feedLink", feed);
                 feedLink.add(new Label("title", new PropertyModel<>(feed, "title")));
-                feedLink.add(new Label("content", new Model<>(displayedContent)));
-                feedLink.add(new Label("author", new PropertyModel<>(feed, "author.username")));
+                feedLink.add(new Label("content", Model.of(displayedContent)));
+                feedLink.add(new Label("date", Model.of(feedDate)));
                 item.add(feedLink);
-//                item.add(new Label("author", new PropertyModel<>(feed, "author.username")));
-//                item.add(new Label("date", new PropertyModel<>(feed, "date")));
             }
         };
         add(dataView);
         add(new PagingNavigation("pageNav", dataView));
+    }
+
+    private String formatDate(Date date) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
+        return sdf.format(date);
     }
 }

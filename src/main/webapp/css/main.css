@@ -25,3 +25,21 @@ tr.pagination_row td a[disabled = "disabled"] {
 tr.pagination_row td a:hover:not(.active) {
     background-color: #e5dbdb;
 }
+
+.page-header a:link {
+    text-decoration: none;
+    color: #333333;
+}
+
+.page-header a:visited {
+    text-decoration: none;
+    color: #333333;
+}
+
+.page-header a:hover {
+    text-decoration: none;
+}
+
+.page-header a:active {
+    text-decoration: none;
+}
