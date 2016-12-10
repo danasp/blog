@@ -1,11 +1,13 @@
 package org.yab.lemonsky.wicket.components.panel;
 
+import org.apache.wicket.authroles.authorization.strategies.role.Roles;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.yab.lemonsky.wicket.pages.Index;
 import org.yab.lemonsky.wicket.pages.add_feed.AddFeedPage;
 import org.yab.lemonsky.wicket.pages.feeds.FeedsPage;
 import org.yab.lemonsky.wicket.pages.login.YabSignInPage;
+import org.yab.lemonsky.wicket.security.RoleChecker;
 import org.yab.lemonsky.wicket.security.YabAuthenticationSession;
 
 /**
@@ -14,25 +16,30 @@ import org.yab.lemonsky.wicket.security.YabAuthenticationSession;
  */
 public class NavigationPanel extends Panel {
 
-    public NavigationPanel(String id) {
+    private Roles roles;
+    private boolean isLogined;
+
+    public NavigationPanel(String id, Roles roles, boolean isLogined) {
         super(id);
+        this.roles = roles;
+        this.isLogined = isLogined;
         init();
     }
 
     private void init() {
-        add(new Link("link1") {
+        add(new Link("home") {
             @Override
             public void onClick() {
                 setResponsePage(FeedsPage.class);
             }
         });
 
-        add(new Link("link2") {
+        add(new Link("addFeed") {
             @Override
             public void onClick() {
                 setResponsePage(AddFeedPage.class);
             }
-        });
+        }.setVisible(RoleChecker.isAdmin(roles)));
 
         add(new Link("link3") {
             @Override
@@ -41,13 +48,14 @@ public class NavigationPanel extends Panel {
             }
         });
 
-        boolean isLogined = YabAuthenticationSession.get().isSignedIn();
-        add(new SignOutPanel("signOutPanel").setVisible(isLogined));
+        add(new SignOutPanel("signOutPanel")
+                .setVisible(this.isLogined));
+
         add(new Link("login") {
             @Override
             public void onClick() {
                 setResponsePage(YabSignInPage.class);
             }
-        }.setVisible(!isLogined));
+        }.setVisible(!this.isLogined));
     }
 }

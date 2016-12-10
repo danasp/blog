@@ -1,6 +1,9 @@
 package org.yab.lemonsky.models.entities;
 
+import org.yab.lemonsky.wicket.security.YabRoles;
+
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Created by Danila on 05.06.2016.
@@ -23,7 +26,10 @@ public class Account {
 
     private String email;
 
-    private String roles;
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "roles", joinColumns = @JoinColumn(name = "account_id"))
+    @Column(name = "roles")
+    private Set<String> roles = new YabRoles();
 
     public Account() {
     }
@@ -84,11 +90,11 @@ public class Account {
         this.email = email;
     }
 
-    public String getRoles() {
+    public Set<String> getRoles() {
         return roles;
     }
 
-    public void setRoles(String roles) {
+    public void setRoles(Set<String> roles) {
         this.roles = roles;
     }
 
