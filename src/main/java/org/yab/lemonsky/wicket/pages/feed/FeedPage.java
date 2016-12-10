@@ -33,7 +33,8 @@ public class FeedPage extends BasePage {
 
         add(new Label("numberOfComment", commentsList == null ? 0 : commentsList.size()));
 
-        add(new AddCommentPanel("addCommentPanel", feed));
+        add(new AddCommentPanel("addCommentPanel", feed)
+                .setVisible(isLogined));
 
         ListView<Comment> comments = new ListView<Comment>("comments", commentsList) {
             @Override
