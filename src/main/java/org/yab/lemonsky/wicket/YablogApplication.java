@@ -6,7 +6,7 @@ import org.apache.wicket.authroles.authentication.AuthenticatedWebApplication;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 import org.wicketstuff.annotation.scan.AnnotatedMountScanner;
-import org.yab.lemonsky.wicket.pages.Index;
+import org.yab.lemonsky.wicket.pages.feeds.FeedsPage;
 import org.yab.lemonsky.wicket.pages.login.YabSignInPage;
 import org.yab.lemonsky.wicket.security.YabAuthenticationSession;
 
@@ -22,6 +22,9 @@ public class YablogApplication extends AuthenticatedWebApplication {
 
         getComponentInstantiationListeners().add(new SpringComponentInjector(this));
         new AnnotatedMountScanner().scanPackage("org.yab.lemonsky.wicket.pages").mount(this);
+        getMarkupSettings().setStripWicketTags(true);
+        getMarkupSettings().setDefaultMarkupEncoding("UTF-8");
+//        getRequestCycleSettings().setResponseRequestEncoding("UTF-8");
 
         //for supporting JSR303 in entity classes
         //for more info see https://ci.apache.org/projects/wicket/guide/6.x/guide/forms2.html#forms2_4
@@ -31,7 +34,7 @@ public class YablogApplication extends AuthenticatedWebApplication {
 
     @Override
     public Class<? extends Page> getHomePage() {
-        return Index.class;
+        return FeedsPage.class;
     }
 
     @Override

@@ -5,6 +5,7 @@ import org.apache.wicket.markup.html.navigation.paging.PagingNavigation;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.data.DataView;
 import org.apache.wicket.markup.repeater.data.ListDataProvider;
+import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 import org.wicketstuff.annotation.mount.MountPath;
 import org.yab.lemonsky.models.entities.Feed;
@@ -35,12 +36,16 @@ public class FeedsPage extends BasePage {
             @Override
             protected void populateItem(Item<Feed> item) {
                 Feed feed = item.getModelObject();
+                String feedText = feed.getFeedText();
+                String displayedContent = feedText.length() > 500 ? feedText.substring(0, 501) : feedText;
 
                 FeedPageLink feedLink = new FeedPageLink("feedLink", feed);
                 feedLink.add(new Label("title", new PropertyModel<>(feed, "title")));
+                feedLink.add(new Label("content", new Model<>(displayedContent)));
+                feedLink.add(new Label("author", new PropertyModel<>(feed, "author.username")));
                 item.add(feedLink);
-                item.add(new Label("author", new PropertyModel<>(feed, "author.username")));
-                item.add(new Label("date", new PropertyModel<>(feed, "date")));
+//                item.add(new Label("author", new PropertyModel<>(feed, "author.username")));
+//                item.add(new Label("date", new PropertyModel<>(feed, "date")));
             }
         };
         add(dataView);

@@ -27,9 +27,9 @@ public class BasePage extends WebPage {
     }
 
     private void init() {
-        Label headerText = new Label("headerText", "It's Header");
+        /*Label headerText = new Label("headerText", "It's Header");
         headerText.setMarkupId("headerText");
-        add(headerText);
+        add(headerText);*/
 
         Label footerText = new Label("footerText", "It's Footer");
         footerText.setMarkupId("footerText");

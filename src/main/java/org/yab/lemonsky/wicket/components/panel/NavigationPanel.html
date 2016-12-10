@@ -5,11 +5,13 @@
       xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.3-strict.dtd">
 <body>
 <wicket:panel>
-    <a href="#" wicket:id="home">Main</a>
-    <a href="#" wicket:id="addFeed">Add feed</a>
-    <a href="#" wicket:id="link3">link3</a>
-    <span wicket:id="signOutPanel"/>
-    <a href="#" wicket:id="login">Login</a>
+    <div class="list-group">
+        <a href="#" wicket:id="home" class="list-group-item">Main</a>
+        <a href="#" wicket:id="addFeed" class="list-group-item">Add feed</a>
+        <a href="#" wicket:id="link3" class="list-group-item">link3</a>
+        <div wicket:id="signOutPanel" class="list-group-item"/>
+        <a href="#" wicket:id="login" class="list-group-item">Login</a>
+    </div>
 </wicket:panel>
 </body>
 </html>
