@@ -10,6 +10,7 @@ import org.yab.lemonsky.models.entities.Account;
 import org.yab.lemonsky.models.entities.Feed;
 import org.yab.lemonsky.repository.FeedRepository;
 import org.yab.lemonsky.wicket.pages.feeds.FeedsPage;
+import org.yab.lemonsky.wicket.security.YabAuthenticationSession;
 
 import java.util.Date;
 
@@ -29,8 +30,7 @@ public class AddFeedForm extends Form<Feed> {
         super(id);
         this.feedRepository = feedRepository;
 
-        Account account = new Account("test", "test", "test", "test", "test@test.test");
-        account.setId(1L);
+        Account account = ((YabAuthenticationSession) YabAuthenticationSession.get()).getAccount();
         feed.setAuthor(account);
 
         CompoundPropertyModel<Feed> model = new CompoundPropertyModel<>(feed);

@@ -1,6 +1,7 @@
 package org.yab.lemonsky.wicket.pages.feeds;
 
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.navigation.paging.PagingNavigation;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.data.DataView;
@@ -9,8 +10,8 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 import org.wicketstuff.annotation.mount.MountPath;
 import org.yab.lemonsky.models.entities.Feed;
-import org.yab.lemonsky.wicket.components.link.FeedPageLink;
 import org.yab.lemonsky.wicket.pages.BasePage;
+import org.yab.lemonsky.wicket.pages.feed.FeedPage;
 
 import java.text.SimpleDateFormat;
 import java.util.Collections;
@@ -24,6 +25,7 @@ import java.util.List;
 @MountPath("feeds")
 public class FeedsPage extends BasePage {
     private final long ITEMS_PER_PAGE = 10;
+    private final int LETTERS_IN_PREVIEW = 500;
     public FeedsPage() {
         super();
         init();
@@ -39,11 +41,17 @@ public class FeedsPage extends BasePage {
             protected void populateItem(Item<Feed> item) {
                 Feed feed = item.getModelObject();
                 String feedText = feed.getFeedText();
-                String displayedContent = feedText.length() > 500 ? feedText.substring(0, 501) : feedText;
+                String displayedContent = feedText.length() > LETTERS_IN_PREVIEW ? feedText.substring(0, (LETTERS_IN_PREVIEW + 1)) : feedText;
 
                 String feedDate = formatDate(feed.getDate());
 
-                FeedPageLink feedLink = new FeedPageLink("feedLink", feed);
+                Link<Feed> feedLink = new Link<Feed>("feedLink") {
+                    @Override
+                    public void onClick() {
+                        setResponsePage(new FeedPage(feed));
+                    }
+                };
+
                 feedLink.add(new Label("title", new PropertyModel<>(feed, "title")));
                 feedLink.add(new Label("content", Model.of(displayedContent)));
                 feedLink.add(new Label("date", Model.of(feedDate)));

@@ -15,13 +15,23 @@ import org.yab.lemonsky.wicket.pages.BasePage;
 @AuthorizeInstantiation({"ADMIN"})
 public class AddFeedPage extends BasePage {
 
+    private Feed feed;
+
     public AddFeedPage() {
         super();
         init();
     }
 
+    public AddFeedPage(Feed feed) {
+        super();
+        this.feed = feed;
+        init();
+    }
+
     private void init() {
-        AddFeedForm form = new AddFeedForm("feedForm", new Feed(), feedRepository);
+        AddFeedForm form = (feed == null)
+                ? new AddFeedForm("feedForm", new Feed(), feedRepository)
+                : new AddFeedForm("feedForm", feed, feedRepository);
         add(form);
 
         add(new FeedbackPanel("feedback"));

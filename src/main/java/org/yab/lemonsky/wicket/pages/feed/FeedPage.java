@@ -2,6 +2,7 @@ package org.yab.lemonsky.wicket.pages.feed;
 
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.basic.MultiLineLabel;
+import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.PropertyModel;
@@ -9,6 +10,8 @@ import org.yab.lemonsky.models.entities.Comment;
 import org.yab.lemonsky.models.entities.Feed;
 import org.yab.lemonsky.wicket.components.panel.AddCommentPanel;
 import org.yab.lemonsky.wicket.pages.BasePage;
+import org.yab.lemonsky.wicket.pages.add_feed.AddFeedPage;
+import org.yab.lemonsky.wicket.security.RoleChecker;
 
 import java.util.List;
 
@@ -26,6 +29,13 @@ public class FeedPage extends BasePage {
     }
 
     private void init() {
+        add(new Link<Feed>("editFeed") {
+            @Override
+            public void onClick() {
+                setResponsePage(new AddFeedPage(feed));
+            }
+        }.setVisible(RoleChecker.isAdmin(roles)));
+
         add(new Label("title", new PropertyModel<>(feed, "title")));
         add(new Label("author", new PropertyModel<>(feed, "author.username")));
         add(new MultiLineLabel("content", new PropertyModel<>(feed, "feedText")));

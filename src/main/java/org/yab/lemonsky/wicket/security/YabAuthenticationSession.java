@@ -10,7 +10,6 @@ import org.yab.lemonsky.repository.AuthRepository;
 
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Stream;
 
 /**
  * User: Danila Vereshchakov
@@ -23,6 +22,7 @@ public class YabAuthenticationSession extends AuthenticatedWebSession {
     AuthRepository authRepository;
 
     private String username;
+    private Account account;
     private Roles roles;
 
     public YabAuthenticationSession(Request request) {
@@ -59,5 +59,16 @@ public class YabAuthenticationSession extends AuthenticatedWebSession {
         super.signOut();
         this.username = null;
         this.roles = null;
+    }
+
+    public Account getAccount() {
+        Optional<Account> accountOpt;
+        if (account == null) {
+            accountOpt = authRepository.getByUserName(username);
+            if (accountOpt.isPresent()) {
+                this.account = accountOpt.get();
+            }
+        }
+        return this.account;
     }
 }
