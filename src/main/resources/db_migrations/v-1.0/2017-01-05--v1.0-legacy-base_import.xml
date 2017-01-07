@@ -1,0 +1,112 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="dvere (generated)" id="1483641759345-1">
+        <createSequence sequenceName="comment_generator"/>
+    </changeSet>
+    <changeSet author="dvere (generated)" id="1483641759345-2">
+        <createSequence sequenceName="feed_generator"/>
+    </changeSet>
+    <changeSet author="dvere (generated)" id="1483641759345-3">
+        <createSequence sequenceName="hibernate_sequence"/>
+    </changeSet>
+    <changeSet author="dvere (generated)" id="1483641759345-4">
+        <createTable tableName="account">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="firstname" type="VARCHAR(255)"/>
+            <column name="lastname" type="VARCHAR(255)"/>
+            <column name="password" type="VARCHAR(255)"/>
+            <column name="username" type="VARCHAR(255)"/>
+            <column name="roles" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="dvere (generated)" id="1483641759345-5">
+        <createTable tableName="comment">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date" type="TIMESTAMP(6) WITHOUT TIME ZONE"/>
+            <column name="text" type="VARCHAR(255)"/>
+            <column name="author_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="dvere (generated)" id="1483641759345-6">
+        <createTable tableName="feed">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date" type="TIMESTAMP(6) WITHOUT TIME ZONE"/>
+            <column name="feedtext" type="TEXT"/>
+            <column name="title" type="VARCHAR(255)"/>
+            <column name="author_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="dvere (generated)" id="1483641759345-7">
+        <createTable tableName="feed_comments">
+            <column name="feed" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="comment" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="dvere (generated)" id="1483641759345-8">
+        <createTable tableName="roles">
+            <column name="account_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="roles" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="dvere (generated)" id="1483641759345-9">
+        <addPrimaryKey columnNames="id" constraintName="account_pkey" tableName="account"/>
+    </changeSet>
+    <changeSet author="dvere (generated)" id="1483641759345-10">
+        <addPrimaryKey columnNames="id" constraintName="comment_pkey" tableName="comment"/>
+    </changeSet>
+    <changeSet author="dvere (generated)" id="1483641759345-11">
+        <addPrimaryKey columnNames="id" constraintName="feed_pkey" tableName="feed"/>
+    </changeSet>
+    <changeSet author="dvere (generated)" id="1483641759345-12">
+        <addUniqueConstraint columnNames="comment" constraintName="uk_60n7xl85t8cnemscls3vhym10"
+                             tableName="feed_comments"/>
+    </changeSet>
+    <changeSet author="dvere (generated)" id="1483641759345-13">
+        <addUniqueConstraint columnNames="username" constraintName="ukde34gsw4qt8auhffbna969ahp" tableName="account"/>
+    </changeSet>
+    <changeSet author="dvere (generated)" id="1483641759345-14">
+        <addForeignKeyConstraint baseColumnNames="feed" baseTableName="feed_comments"
+                                 constraintName="fk9h76e6176ug2vsgn02xsdgex" deferrable="false"
+                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="feed"/>
+    </changeSet>
+    <changeSet author="dvere (generated)" id="1483641759345-15">
+        <addForeignKeyConstraint baseColumnNames="author_id" baseTableName="comment"
+                                 constraintName="fk9o38bqv9j3iph0yjdh48q4c4p" deferrable="false"
+                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="account"/>
+    </changeSet>
+    <changeSet author="dvere (generated)" id="1483641759345-16">
+        <addForeignKeyConstraint baseColumnNames="comment" baseTableName="feed_comments"
+                                 constraintName="fkdoc0fe1q18mrdfendhix11svi" deferrable="false"
+                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="comment"/>
+    </changeSet>
+    <changeSet author="dvere (generated)" id="1483641759345-17">
+        <addForeignKeyConstraint baseColumnNames="account_id" baseTableName="roles"
+                                 constraintName="fkoovxrl3lk5ndbdgaj06qhqa1q" deferrable="false"
+                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="account"/>
+    </changeSet>
+    <changeSet author="dvere (generated)" id="1483641759345-18">
+        <addForeignKeyConstraint baseColumnNames="author_id" baseTableName="feed"
+                                 constraintName="fkrkmxqk4vo10l5ge9pcabpq8hm" deferrable="false"
+                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="account"/>
+    </changeSet>
+</databaseChangeLog>

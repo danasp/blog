@@ -1,0 +1,1 @@
+ALTER TABLE comment ALTER COLUMN text TYPE text;
