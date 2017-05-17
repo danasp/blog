@@ -16,12 +16,12 @@ import org.yab.lemonsky.ui.security.RoleChecker;
 public class NavigationPanel extends Panel {
 
     private Roles roles;
-    private boolean isLogined;
+    private boolean isLoggedIn;
 
-    public NavigationPanel(String id, Roles roles, boolean isLogined) {
+    public NavigationPanel(String id, Roles roles, boolean isLoggedIn) {
         super(id);
         this.roles = roles;
-        this.isLogined = isLogined;
+        this.isLoggedIn = isLoggedIn;
         init();
     }
 
@@ -40,7 +40,7 @@ public class NavigationPanel extends Panel {
             }
         }.setVisible(RoleChecker.isAdmin(roles)));
 
-        add(new Link("link3") {
+        add(new Link("about") {
             @Override
             public void onClick() {
                 setResponsePage(Index.class);
@@ -48,13 +48,13 @@ public class NavigationPanel extends Panel {
         });
 
         add(new SignOutPanel("signOutPanel")
-                .setVisible(this.isLogined));
+                .setVisible(this.isLoggedIn));
 
         add(new Link("login") {
             @Override
             public void onClick() {
                 setResponsePage(YabSignInPage.class);
             }
-        }.setVisible(!this.isLogined));
+        }.setVisible(!this.isLoggedIn));
     }
 }

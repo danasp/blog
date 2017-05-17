@@ -17,12 +17,12 @@ public class BasePage extends WebPage {
 
     @SpringBean
     protected FeedRepository feedRepository;
-    protected boolean isLogined;
+    protected boolean isLoggedIn;
     protected Roles roles;
 
     public BasePage() {
         super();
-        this.isLogined = YabAuthenticationSession.get().isSignedIn();
+        this.isLoggedIn = YabAuthenticationSession.get().isSignedIn();
         this.roles = YabAuthenticationSession.get().getRoles();
         init();
     }
@@ -36,6 +36,6 @@ public class BasePage extends WebPage {
         };
         add(headerLink);
 
-        add(new NavigationPanel("navPanel", roles, isLogined));
+        add(new NavigationPanel("navPanel", roles, isLoggedIn));
     }
 }
