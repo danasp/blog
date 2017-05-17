@@ -1,4 +1,4 @@
-package org.yab.lemonsky.wicket.pages;
+package org.yab.lemonsky.ui.pages;
 
 /**
  * User: Danila Vereshchakov

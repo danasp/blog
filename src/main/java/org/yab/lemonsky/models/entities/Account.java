@@ -1,6 +1,6 @@
 package org.yab.lemonsky.models.entities;
 
-import org.yab.lemonsky.wicket.security.YabRoles;
+import org.yab.lemonsky.ui.security.YabRoles;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -100,15 +100,13 @@ public class Account {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Account{");
-        sb.append("id=").append(id);
-        sb.append(", username='").append(username).append('\'');
-        sb.append(", password='").append(password).append('\'');
-        sb.append(", firstName='").append(firstName).append('\'');
-        sb.append(", lastName='").append(lastName).append('\'');
-        sb.append(", email='").append(email).append('\'');
-        sb.append(", roles=").append(roles);
-        sb.append('}');
-        return sb.toString();
+        return "Account{" + "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", roles=" + roles +
+                '}';
     }
 }

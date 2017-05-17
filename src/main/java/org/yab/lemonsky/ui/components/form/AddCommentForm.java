@@ -1,4 +1,4 @@
-package org.yab.lemonsky.wicket.components.form;
+package org.yab.lemonsky.ui.components.form;
 
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
@@ -10,7 +10,7 @@ import org.yab.lemonsky.models.entities.Account;
 import org.yab.lemonsky.models.entities.Comment;
 import org.yab.lemonsky.models.entities.Feed;
 import org.yab.lemonsky.repository.FeedRepository;
-import org.yab.lemonsky.wicket.pages.feed.FeedPage;
+import org.yab.lemonsky.ui.pages.feed.FeedPage;
 
 /**
  * User: Danila Vereshchakov

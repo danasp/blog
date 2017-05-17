@@ -1,4 +1,4 @@
-package org.yab.lemonsky.wicket.components.form;
+package org.yab.lemonsky.ui.components.form;
 
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
@@ -9,8 +9,8 @@ import org.apache.wicket.model.Model;
 import org.yab.lemonsky.models.entities.Account;
 import org.yab.lemonsky.models.entities.Feed;
 import org.yab.lemonsky.repository.FeedRepository;
-import org.yab.lemonsky.wicket.pages.feeds.FeedsPage;
-import org.yab.lemonsky.wicket.security.YabAuthenticationSession;
+import org.yab.lemonsky.ui.pages.feeds.FeedsPage;
+import org.yab.lemonsky.ui.security.YabAuthenticationSession;
 
 import java.util.Date;
 

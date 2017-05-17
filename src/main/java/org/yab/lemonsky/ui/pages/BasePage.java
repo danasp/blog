@@ -1,14 +1,13 @@
-package org.yab.lemonsky.wicket.pages;
+package org.yab.lemonsky.ui.pages;
 
 import org.apache.wicket.authroles.authorization.strategies.role.Roles;
 import org.apache.wicket.markup.html.WebPage;
-import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.yab.lemonsky.repository.FeedRepository;
-import org.yab.lemonsky.wicket.components.panel.NavigationPanel;
-import org.yab.lemonsky.wicket.pages.feeds.FeedsPage;
-import org.yab.lemonsky.wicket.security.YabAuthenticationSession;
+import org.yab.lemonsky.ui.components.panel.NavigationPanel;
+import org.yab.lemonsky.ui.pages.feeds.FeedsPage;
+import org.yab.lemonsky.ui.security.YabAuthenticationSession;
 
 /**
  * User: Danila Vereshchakov
@@ -36,10 +35,6 @@ public class BasePage extends WebPage {
             }
         };
         add(headerLink);
-
-        Label footerText = new Label("footerText", "It's Footer");
-        footerText.setMarkupId("footerText");
-        add(footerText);
 
         add(new NavigationPanel("navPanel", roles, isLogined));
     }

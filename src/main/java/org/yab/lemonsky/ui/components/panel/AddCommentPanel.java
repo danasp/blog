@@ -1,11 +1,10 @@
-package org.yab.lemonsky.wicket.components.panel;
+package org.yab.lemonsky.ui.components.panel;
 
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.yab.lemonsky.models.entities.Comment;
 import org.yab.lemonsky.models.entities.Feed;
-import org.yab.lemonsky.wicket.components.form.AddCommentForm;
-import org.yab.lemonsky.wicket.pages.BasePage;
+import org.yab.lemonsky.ui.components.form.AddCommentForm;
 
 /**
  * User: Danila Vereshchakov

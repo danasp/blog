@@ -1,4 +1,4 @@
-package org.yab.lemonsky.wicket.security;
+package org.yab.lemonsky.ui.security;
 
 import org.apache.wicket.authroles.authentication.AuthenticatedWebSession;
 import org.apache.wicket.authroles.authorization.strategies.role.Roles;

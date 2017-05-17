@@ -5,8 +5,8 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
-    <include file="v-1.0/2017-01-05--v1.0-legacy-base_import.xml" relativeToChangelogFile="true"/>
-    <include file="v-1.0/2017-01-05--v1.0-change-comment-text-column-type.xml" relativeToChangelogFile="true"/>
-    <include file="v-1.0/2017-03-31--v1.0-insert-role_to_admin.xml" relativeToChangelogFile="true"/>
+    <changeSet id="v1.0-1" author="danila.vereshchakov">
+        <sqlFile path="sql/2017-03-31--v1.0-insert-role-to-admin.sql" relativeToChangelogFile="true"/>
+    </changeSet>
 
 </databaseChangeLog>

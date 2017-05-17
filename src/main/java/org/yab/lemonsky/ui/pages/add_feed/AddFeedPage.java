@@ -1,11 +1,11 @@
-package org.yab.lemonsky.wicket.pages.add_feed;
+package org.yab.lemonsky.ui.pages.add_feed;
 
 import org.apache.wicket.authroles.authorization.strategies.role.annotations.AuthorizeInstantiation;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.wicketstuff.annotation.mount.MountPath;
 import org.yab.lemonsky.models.entities.Feed;
-import org.yab.lemonsky.wicket.components.form.AddFeedForm;
-import org.yab.lemonsky.wicket.pages.BasePage;
+import org.yab.lemonsky.ui.components.form.AddFeedForm;
+import org.yab.lemonsky.ui.pages.BasePage;
 
 /**
  * User: Danila Vereshchakov

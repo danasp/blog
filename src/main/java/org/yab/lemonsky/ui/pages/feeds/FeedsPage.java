@@ -1,4 +1,4 @@
-package org.yab.lemonsky.wicket.pages.feeds;
+package org.yab.lemonsky.ui.pages.feeds;
 
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
@@ -10,8 +10,8 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 import org.wicketstuff.annotation.mount.MountPath;
 import org.yab.lemonsky.models.entities.Feed;
-import org.yab.lemonsky.wicket.pages.BasePage;
-import org.yab.lemonsky.wicket.pages.feed.FeedPage;
+import org.yab.lemonsky.ui.pages.BasePage;
+import org.yab.lemonsky.ui.pages.feed.FeedPage;
 
 import java.text.SimpleDateFormat;
 import java.util.Collections;

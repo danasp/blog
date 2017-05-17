@@ -1,4 +1,4 @@
-package org.yab.lemonsky.wicket;
+package org.yab.lemonsky.ui;
 
 import org.apache.wicket.Page;
 import org.apache.wicket.authroles.authentication.AbstractAuthenticatedWebSession;
@@ -6,9 +6,9 @@ import org.apache.wicket.authroles.authentication.AuthenticatedWebApplication;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 import org.wicketstuff.annotation.scan.AnnotatedMountScanner;
-import org.yab.lemonsky.wicket.pages.feeds.FeedsPage;
-import org.yab.lemonsky.wicket.pages.login.YabSignInPage;
-import org.yab.lemonsky.wicket.security.YabAuthenticationSession;
+import org.yab.lemonsky.ui.pages.feeds.FeedsPage;
+import org.yab.lemonsky.ui.pages.login.YabSignInPage;
+import org.yab.lemonsky.ui.security.YabAuthenticationSession;
 
 /**
  * User: Danila Vereshchakov
@@ -21,7 +21,7 @@ public class YablogApplication extends AuthenticatedWebApplication {
         super.init();
 
         getComponentInstantiationListeners().add(new SpringComponentInjector(this));
-        new AnnotatedMountScanner().scanPackage("org.yab.lemonsky.wicket.pages").mount(this);
+        new AnnotatedMountScanner().scanPackage("org.yab.lemonsky.ui.pages").mount(this);
         getMarkupSettings().setStripWicketTags(true);
         getMarkupSettings().setDefaultMarkupEncoding("UTF-8");
 //        getRequestCycleSettings().setResponseRequestEncoding("UTF-8");

@@ -1,14 +1,13 @@
-package org.yab.lemonsky.wicket.components.panel;
+package org.yab.lemonsky.ui.components.panel;
 
 import org.apache.wicket.authroles.authorization.strategies.role.Roles;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.Panel;
-import org.yab.lemonsky.wicket.pages.Index;
-import org.yab.lemonsky.wicket.pages.add_feed.AddFeedPage;
-import org.yab.lemonsky.wicket.pages.feeds.FeedsPage;
-import org.yab.lemonsky.wicket.pages.login.YabSignInPage;
-import org.yab.lemonsky.wicket.security.RoleChecker;
-import org.yab.lemonsky.wicket.security.YabAuthenticationSession;
+import org.yab.lemonsky.ui.pages.Index;
+import org.yab.lemonsky.ui.pages.add_feed.AddFeedPage;
+import org.yab.lemonsky.ui.pages.feeds.FeedsPage;
+import org.yab.lemonsky.ui.pages.login.YabSignInPage;
+import org.yab.lemonsky.ui.security.RoleChecker;
 
 /**
  * User: Danila Vereshchakov
