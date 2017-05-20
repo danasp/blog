@@ -1,7 +1,7 @@
 package org.yab.lemonsky.ui.pages;
 
-import org.apache.wicket.markup.html.WebPage;
 import org.wicketstuff.annotation.mount.MountPath;
+import org.yab.lemonsky.ui.components.panel.FeedsPanel;
 
 /**
  * User: Danila Vereshchakov
@@ -9,9 +9,10 @@ import org.wicketstuff.annotation.mount.MountPath;
  */
 
 @MountPath("index")
-public class Index extends WebPage {
+public class Index extends BasePage {
 
     public Index() {
         super();
+        add(new FeedsPanel("feeds", feedRepository));
     }
 }

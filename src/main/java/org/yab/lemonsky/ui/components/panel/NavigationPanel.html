@@ -5,13 +5,41 @@
       xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.3-strict.dtd">
 <body>
 <wicket:panel>
-    <div class="list-group">
-        <a href="#" wicket:id="home" class="list-group-item">Main</a>
-        <a href="#" wicket:id="addFeed" class="list-group-item">Add feed</a>
-        <a href="#" wicket:id="about" class="list-group-item">link3</a>
-        <div wicket:id="signOutPanel" class="list-group-item"/>
-        <a href="#" wicket:id="login" class="list-group-item">Login</a>
-    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="#" wicket:id="headerLink">Danila Vereshchakov</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" wicket:id="home">Home</a>
+                    </li>
+                    <li>
+                        <a href="#" wicket:id="about">About</a>
+                    </li>
+                    <li>
+                        <a href="#" wicket:id="addFeed">Add Post</a>
+                    </li>
+                    <li>
+                        <a href="#" wicket:id="login">Log in</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
 </wicket:panel>
 </body>
 </html>

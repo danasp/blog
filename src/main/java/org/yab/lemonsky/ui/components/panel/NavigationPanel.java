@@ -26,10 +26,18 @@ public class NavigationPanel extends Panel {
     }
 
     private void init() {
+        Link headerLink = new Link("headerLink") {
+            @Override
+            public void onClick() {
+                setResponsePage(Index.class);
+            }
+        };
+        add(headerLink);
+
         add(new Link("home") {
             @Override
             public void onClick() {
-                setResponsePage(FeedsPage.class);
+                setResponsePage(Index.class);
             }
         });
 

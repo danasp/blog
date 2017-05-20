@@ -26,8 +26,9 @@ public class FeedRepositoryImpl implements FeedRepository {
 
     @Override
     public List<Feed> getAllFeeds() {
-        List<Feed> feeds = entityManager.createQuery("FROM Feed").getResultList();
-        return feeds == null ? Collections.emptyList() : feeds;
+        List<Feed> feeds = entityManager.createQuery("FROM Feed ORDER BY id")
+                .getResultList();
+        return (feeds == null) ? Collections.emptyList() : feeds;
     }
 
     @Override

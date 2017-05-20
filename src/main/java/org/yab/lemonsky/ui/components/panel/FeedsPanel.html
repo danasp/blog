@@ -1,0 +1,30 @@
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.3-strict.dtd">
+<body>
+<wicket:panel>
+    <div wicket:id="dataContainer">
+        <div class="row">
+            <div wicket:id="feeds" class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-preview">
+                    <a href="#" wicket:id="feedLink">
+                        <h2 class="post-title" wicket:id="title"/>
+                        <h3 class="post-subtitle" wicket:id="content-preview"/>
+                    </a>
+                    <p class="post-meta">Posted by <a href="#">Danila Vereshchakov</a> on <span wicket:id="date"/></p>
+                </div>
+                <hr/>
+            </div>
+            <hr>
+        </div>
+
+        <!-- Pager -->
+        <span wicket:id="pageNav"></span>
+
+    </div>
+</wicket:panel>
+</body>
+</html>

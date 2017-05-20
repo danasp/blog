@@ -28,14 +28,6 @@ public class BasePage extends WebPage {
     }
 
     private void init() {
-        Link headerLink = new Link("headerLink") {
-            @Override
-            public void onClick() {
-                setResponsePage(FeedsPage.class);
-            }
-        };
-        add(headerLink);
-
         add(new NavigationPanel("navPanel", roles, isLoggedIn));
     }
 }
