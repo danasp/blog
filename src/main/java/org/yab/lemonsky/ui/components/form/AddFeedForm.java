@@ -9,7 +9,7 @@ import org.apache.wicket.model.Model;
 import org.yab.lemonsky.models.entities.Account;
 import org.yab.lemonsky.models.entities.Feed;
 import org.yab.lemonsky.repository.FeedRepository;
-import org.yab.lemonsky.ui.pages.feeds.FeedsPage;
+import org.yab.lemonsky.ui.pages.Index;
 import org.yab.lemonsky.ui.security.YabAuthenticationSession;
 
 import java.util.Date;
@@ -46,7 +46,7 @@ public class AddFeedForm extends Form<Feed> {
         Feed feed = this.getModelObject();
         feed.setDate(new Date());
         feedRepository.saveFeed(feed);
-        setResponsePage(FeedsPage.class);
+        setResponsePage(Index.class);
     }
 
 }

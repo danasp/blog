@@ -6,7 +6,7 @@ import org.apache.wicket.authroles.authentication.AuthenticatedWebApplication;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 import org.wicketstuff.annotation.scan.AnnotatedMountScanner;
-import org.yab.lemonsky.ui.pages.feeds.FeedsPage;
+import org.yab.lemonsky.ui.pages.Index;
 import org.yab.lemonsky.ui.pages.login.YabSignInPage;
 import org.yab.lemonsky.ui.security.YabAuthenticationSession;
 
@@ -22,7 +22,7 @@ public class YablogApplication extends AuthenticatedWebApplication {
 
         getComponentInstantiationListeners().add(new SpringComponentInjector(this));
         new AnnotatedMountScanner().scanPackage("org.yab.lemonsky.ui.pages").mount(this);
-        getMarkupSettings().setStripWicketTags(true);
+        getMarkupSettings().setStripWicketTags(true); //remove wicket markup from output
         getMarkupSettings().setDefaultMarkupEncoding("UTF-8");
 //        getRequestCycleSettings().setResponseRequestEncoding("UTF-8");
 
@@ -34,7 +34,7 @@ public class YablogApplication extends AuthenticatedWebApplication {
 
     @Override
     public Class<? extends Page> getHomePage() {
-        return FeedsPage.class;
+        return Index.class;
     }
 
     @Override

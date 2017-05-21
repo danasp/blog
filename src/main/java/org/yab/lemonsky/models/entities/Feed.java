@@ -2,7 +2,7 @@ package org.yab.lemonsky.models.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -62,6 +62,11 @@ public class Feed implements Serializable {
 
     public Date getDate() {
         return date;
+    }
+
+    public String getFormattedDate() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
+        return sdf.format(date);
     }
 
     public void setDate(Date date) {

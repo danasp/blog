@@ -10,7 +10,6 @@ import org.yab.lemonsky.models.entities.Account;
 import org.yab.lemonsky.models.entities.Comment;
 import org.yab.lemonsky.models.entities.Feed;
 import org.yab.lemonsky.repository.FeedRepository;
-import org.yab.lemonsky.ui.pages.feed.FeedPage;
 
 /**
  * User: Danila Vereshchakov
@@ -45,6 +44,6 @@ public class AddCommentForm extends Form<Comment> {
         Comment comment = this.getModelObject();
         feed.getComments().add(comment);
         feedRepository.saveFeed(feed);
-        setResponsePage(new FeedPage(feed));
+//        setResponsePage(new FeedPage(feed));
     }
 }

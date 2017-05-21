@@ -4,20 +4,20 @@ import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
+import org.apache.wicket.markup.html.link.StatelessLink;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.data.DataView;
 import org.apache.wicket.markup.repeater.data.ListDataProvider;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
+import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.yab.lemonsky.models.entities.Feed;
 import org.yab.lemonsky.repository.FeedRepository;
 import org.yab.lemonsky.ui.components.navigator.TwoWayNavigator;
 import org.yab.lemonsky.ui.pages.feed.FeedPage;
 
-import java.text.SimpleDateFormat;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -47,12 +47,14 @@ public class FeedsPanel extends Panel {
                 String feedText = feed.getFeedText();
                 String displayedContent = feedText.length() > LETTERS_IN_PREVIEW ? feedText.substring(0, (LETTERS_IN_PREVIEW + 1)) : feedText;
 
-                String feedDate = formatDate(feed.getDate());
+                String feedDate = feed.getFormattedDate();
 
-                Link<Feed> feedLink = new Link<Feed>("feedLink") {
+                Link<Feed> feedLink = new StatelessLink<Feed>("feedLink") {
                     @Override
                     public void onClick() {
-                        setResponsePage(new FeedPage(feed));
+                        PageParameters parameters = new PageParameters();
+                        parameters.set(0, feed.getId());
+                        setResponsePage(FeedPage.class, parameters);
                     }
                 };
 
@@ -72,12 +74,4 @@ public class FeedsPanel extends Panel {
         });
 
     }
-
-
-    private String formatDate(Date date) {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
-        return sdf.format(date);
-    }
-
-
 }

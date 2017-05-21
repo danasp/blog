@@ -1,9 +1,9 @@
 package org.yab.lemonsky.ui.components.panel;
 
-import org.apache.wicket.markup.html.link.Link;
+import org.apache.wicket.markup.html.link.StatelessLink;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
-import org.yab.lemonsky.ui.pages.feeds.FeedsPage;
+import org.yab.lemonsky.ui.pages.Index;
 import org.yab.lemonsky.ui.security.YabAuthenticationSession;
 
 /**
@@ -22,13 +22,13 @@ public class SignOutPanel extends Panel {
     }
 
     private void init() {
-        add(new Link("signOut") {
+        add(new StatelessLink("signOut") {
             @Override
             public void onClick() {
                 if (YabAuthenticationSession.get().isSignedIn()) {
                     YabAuthenticationSession.get().invalidate();
                 }
-                setResponsePage(FeedsPage.class);
+                setResponsePage(Index.class);
             }
         });
 

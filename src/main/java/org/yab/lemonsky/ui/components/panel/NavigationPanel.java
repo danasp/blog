@@ -2,10 +2,10 @@ package org.yab.lemonsky.ui.components.panel;
 
 import org.apache.wicket.authroles.authorization.strategies.role.Roles;
 import org.apache.wicket.markup.html.link.Link;
+import org.apache.wicket.markup.html.link.StatelessLink;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.yab.lemonsky.ui.pages.Index;
 import org.yab.lemonsky.ui.pages.add_feed.AddFeedPage;
-import org.yab.lemonsky.ui.pages.feeds.FeedsPage;
 import org.yab.lemonsky.ui.pages.login.YabSignInPage;
 import org.yab.lemonsky.ui.security.RoleChecker;
 
@@ -26,7 +26,7 @@ public class NavigationPanel extends Panel {
     }
 
     private void init() {
-        Link headerLink = new Link("headerLink") {
+        Link headerLink = new StatelessLink("headerLink") {
             @Override
             public void onClick() {
                 setResponsePage(Index.class);
@@ -34,21 +34,21 @@ public class NavigationPanel extends Panel {
         };
         add(headerLink);
 
-        add(new Link("home") {
+        add(new StatelessLink("home") {
             @Override
             public void onClick() {
                 setResponsePage(Index.class);
             }
         });
 
-        add(new Link("addFeed") {
+        add(new StatelessLink("addFeed") {
             @Override
             public void onClick() {
                 setResponsePage(AddFeedPage.class);
             }
         }.setVisible(RoleChecker.isAdmin(roles)));
 
-        add(new Link("about") {
+        add(new StatelessLink("about") {
             @Override
             public void onClick() {
                 setResponsePage(Index.class);
@@ -56,9 +56,10 @@ public class NavigationPanel extends Panel {
         });
 
         add(new SignOutPanel("signOutPanel")
+                .setRenderBodyOnly(true)
                 .setVisible(this.isLoggedIn));
 
-        add(new Link("login") {
+        add(new StatelessLink("login") {
             @Override
             public void onClick() {
                 setResponsePage(YabSignInPage.class);
