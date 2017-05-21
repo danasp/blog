@@ -3,10 +3,12 @@ package org.yab.lemonsky.ui.pages.feed;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.basic.MultiLineLabel;
 import org.apache.wicket.markup.html.link.Link;
+import org.apache.wicket.markup.html.link.StatelessLink;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.wicketstuff.annotation.mount.MountPath;
 import org.yab.lemonsky.models.entities.Feed;
+import org.yab.lemonsky.ui.components.panel.FeedNavigationExtensionPanel;
 import org.yab.lemonsky.ui.pages.BasePage;
 import org.yab.lemonsky.ui.pages.add_feed.AddFeedPage;
 import org.yab.lemonsky.ui.security.RoleChecker;
@@ -18,7 +20,6 @@ import org.yab.lemonsky.ui.security.RoleChecker;
 @MountPath("feed")
 public class FeedPage extends BasePage {
 
-    public static final String FEED_PARAM = "feed_id";
     private Feed feed;
 
 
@@ -30,12 +31,7 @@ public class FeedPage extends BasePage {
     }
 
     private void init() {
-        add(new Link<Feed>("editFeed") {
-            @Override
-            public void onClick() {
-                setResponsePage(new AddFeedPage(feed));
-            }
-        }.setVisible(RoleChecker.isAdmin(roles)));
+        getNavPanel().replaceWith(new FeedNavigationExtensionPanel("navPanel", roles, isLoggedIn, feed));
 
         add(new Label("title", new PropertyModel<>(feed, "title")));
         add(new Label("author", new PropertyModel<>(feed, "author.username")));

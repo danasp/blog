@@ -4,6 +4,7 @@ import org.apache.wicket.authroles.authorization.strategies.role.Roles;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.link.StatelessLink;
 import org.apache.wicket.markup.html.panel.Panel;
+import org.yab.lemonsky.models.entities.Feed;
 import org.yab.lemonsky.ui.pages.Index;
 import org.yab.lemonsky.ui.pages.add_feed.AddFeedPage;
 import org.yab.lemonsky.ui.pages.login.YabSignInPage;
@@ -65,5 +66,6 @@ public class NavigationPanel extends Panel {
                 setResponsePage(YabSignInPage.class);
             }
         }.setVisible(!this.isLoggedIn));
+
     }
 }

@@ -1,5 +1,6 @@
 package org.yab.lemonsky.ui.pages;
 
+import org.apache.wicket.Component;
 import org.apache.wicket.authroles.authorization.strategies.role.Roles;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.spring.injection.annot.SpringBean;
@@ -17,6 +18,7 @@ public class BasePage extends WebPage {
     protected FeedRepository feedRepository;
     protected boolean isLoggedIn;
     protected Roles roles;
+    private NavigationPanel navPanel;
 
     public BasePage() {
         super();
@@ -26,6 +28,11 @@ public class BasePage extends WebPage {
     }
 
     private void init() {
-        add(new NavigationPanel("navPanel", roles, isLoggedIn));
+        navPanel = new NavigationPanel("navPanel", roles, isLoggedIn);
+        add(navPanel);
+    }
+
+    public NavigationPanel getNavPanel() {
+        return navPanel;
     }
 }
