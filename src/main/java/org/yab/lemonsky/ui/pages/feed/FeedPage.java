@@ -38,4 +38,5 @@ public class FeedPage extends BasePage {
                 .setEscapeModelStrings(false));
         add(new Label("feedDate", new PropertyModel<>(feed, "getFormattedDate")));
     }
+
 }
