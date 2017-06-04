@@ -1,10 +1,11 @@
 package org.yab.lemonsky.configuration;
 
+import liquibase.integration.spring.SpringLiquibase;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.ImportResource;
 
 /**
@@ -12,34 +13,16 @@ import org.springframework.context.annotation.ImportResource;
  * Date: 22.05.2017
  */
 @Configuration
-@ComponentScan(basePackages = "org.yab.lemonsky")
-@ImportResource({
-                "classpath:applicationContext-base.xml",
-                "classpath:applicationContext-hibernate.xml"
-})
+@ImportResource({"classpath:applicationContext-hibernate.xml"})
+@Import(ApplicationContextBase.class)
 public class ApplicationContextHibernate {
-    /*
-    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
-    <property name="driverClassName" value="${db.driver}"/>
-    <property name="url" value="${db.url}"/>
-    <property name="username" value="${db.username}"/>
-    <property name="password" value="${db.password}"/>
-    <property name="validationQuery" value="select 1"/>
-    <property name="testOnBorrow" value="true"/>
-    </bean>
-    */
-
-    @Value("${db.driver}")
-    String driver;
-    @Value("${db.url}")
-    String url;
-    @Value("${db.username}")
-    String username;
-    @Value("${db.password}")
-    String password;
 
     @Bean
-    public BasicDataSource dataSource() {
+    public BasicDataSource dataSource(
+            @Value("${db.driver}") String driver,
+            @Value("${db.url}") String url,
+            @Value("${db.username}") String username,
+            @Value("${db.password}") String password) {
         BasicDataSource ds = new BasicDataSource();
         ds.setDriverClassName(driver);
         ds.setUrl(url);
@@ -48,5 +31,14 @@ public class ApplicationContextHibernate {
         ds.setValidationQuery("select 1");
         ds.setTestOnBorrow(true);
         return ds;
+    }
+
+
+    @Bean
+    public SpringLiquibase liquibase(BasicDataSource dataSource) {
+        SpringLiquibase liquibase = new SpringLiquibase();
+        liquibase.setDataSource(dataSource);
+        liquibase.setChangeLog("classpath:db_migrations/changelog-master.xml");
+        return liquibase;
     }
 }

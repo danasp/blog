@@ -1,12 +1,14 @@
 package org.yab.lemonsky.ui.pages;
 
-import org.apache.wicket.Component;
 import org.apache.wicket.authroles.authorization.strategies.role.Roles;
 import org.apache.wicket.markup.html.WebPage;
+import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.yab.lemonsky.repository.FeedRepository;
 import org.yab.lemonsky.ui.components.panel.NavigationPanel;
 import org.yab.lemonsky.ui.security.YabAuthenticationSession;
+
+import java.time.LocalDate;
 
 /**
  * User: Danila Vereshchakov
@@ -28,6 +30,7 @@ public class BasePage extends WebPage {
     }
 
     private void init() {
+        add(new Label("currentYear", LocalDate.now().getYear()));
         navPanel = new NavigationPanel("navPanel", roles, isLoggedIn);
         add(navPanel);
     }

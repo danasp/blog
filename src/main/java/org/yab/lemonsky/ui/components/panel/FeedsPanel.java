@@ -59,7 +59,8 @@ public class FeedsPanel extends Panel {
                 };
 
                 feedLink.add(new Label("title", new PropertyModel<>(feed, "title")));
-                feedLink.add(new Label("content-preview", Model.of(displayedContent)));
+                feedLink.add(new Label("content-preview", Model.of(displayedContent))
+                        .setEscapeModelStrings(false));
                 item.add(new Label("date", Model.of(feedDate)));
                 item.add(feedLink);
             }

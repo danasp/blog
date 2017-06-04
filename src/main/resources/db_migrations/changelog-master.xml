@@ -8,5 +8,6 @@
     <include file="v-1.0/2017-01-05--v1.0-legacy-base_import.xml" relativeToChangelogFile="true"/>
     <include file="v-1.0/2017-01-05--v1.0-change-comment-text-column-type.xml" relativeToChangelogFile="true"/>
     <include file="v-1.0/2017-03-31--v1.0-insert-role_to_admin.xml" relativeToChangelogFile="true"/>
+    <include file="v-1.0/2017-06-04--v1.0-remove_unused_tables.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

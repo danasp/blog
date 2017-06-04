@@ -1,0 +1,2 @@
+DROP TABLE IF EXISTS feed_comments;
+DROP TABLE IF EXISTS comment;

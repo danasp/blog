@@ -1,7 +1,7 @@
 package org.yab.lemonsky.configuration;
 
-import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 import org.springframework.context.annotation.*;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.io.ClassPathResource;
 
 /**
@@ -10,13 +10,11 @@ import org.springframework.core.io.ClassPathResource;
  */
 @Configuration
 @ComponentScan(basePackages = "org.yab.lemonsky")
-@PropertySource(value = {"classpath:hibernate.properties"})
-//@Import(ApplicationContextHibernate.class)
 public class ApplicationContextBase {
 
     @Bean
-    public PropertyPlaceholderConfigurer propertyConfigurer() {
-        PropertyPlaceholderConfigurer placeholderConfigurer = new PropertyPlaceholderConfigurer();
+    public PropertySourcesPlaceholderConfigurer propertyConfigurer() {
+        PropertySourcesPlaceholderConfigurer placeholderConfigurer = new PropertySourcesPlaceholderConfigurer();
         ClassPathResource resource = new ClassPathResource("hibernate.properties");
         placeholderConfigurer.setLocations(resource);
         return placeholderConfigurer;

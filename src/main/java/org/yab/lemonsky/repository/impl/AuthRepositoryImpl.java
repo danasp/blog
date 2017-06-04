@@ -26,9 +26,11 @@ public class AuthRepositoryImpl implements AuthRepository {
         if (maybeAcc.isPresent()) {
             //TODO: password will be encrypted. Equals is not appropriate in this case.
 //            return maybeAcc.get().getPassword().equals(password);
+
             if (maybeAcc.get().getPassword().equals(password)) {
                 return true;
             }
+
         }
 
         return false;
@@ -41,7 +43,7 @@ public class AuthRepositoryImpl implements AuthRepository {
                 .setParameter("username", username)
                 .getResultList();
 
-        return Optional.of(accounts.isEmpty() ? null : accounts.get(0));
+        return Optional.ofNullable(accounts.isEmpty() ? null : accounts.get(0));
     }
 
     @Override

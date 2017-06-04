@@ -35,7 +35,8 @@ public class FeedPage extends BasePage {
 
         add(new Label("title", new PropertyModel<>(feed, "title")));
         add(new Label("author", new PropertyModel<>(feed, "author.username")));
-        add(new MultiLineLabel("content", new PropertyModel<>(feed, "feedText")));
+        add(new MultiLineLabel("content", new PropertyModel<>(feed, "feedText"))
+                .setEscapeModelStrings(false));
         add(new Label("feedDate", new PropertyModel<>(feed, "getFormattedDate")));
     }
 }
