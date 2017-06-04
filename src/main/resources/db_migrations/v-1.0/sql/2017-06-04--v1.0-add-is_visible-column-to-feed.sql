@@ -1,0 +1,1 @@
+ALTER TABLE feed ADD COLUMN visible boolean DEFAULT true;

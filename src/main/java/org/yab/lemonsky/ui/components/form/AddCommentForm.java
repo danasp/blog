@@ -42,7 +42,7 @@ public class AddCommentForm extends Form<Comment> {
     @Override
     protected void onSubmit() {
         Comment comment = this.getModelObject();
-        feed.getComments().add(comment);
+//        feed.getComments().add(comment);
         feedRepository.saveFeed(feed);
 //        setResponsePage(new FeedPage(feed));
     }

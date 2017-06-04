@@ -1,6 +1,7 @@
 package org.yab.lemonsky.ui.components.panel;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.authroles.authorization.strategies.role.Roles;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
@@ -12,10 +13,12 @@ import org.apache.wicket.markup.repeater.data.ListDataProvider;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.yab.lemonsky.models.entities.Account;
 import org.yab.lemonsky.models.entities.Feed;
 import org.yab.lemonsky.repository.FeedRepository;
 import org.yab.lemonsky.ui.components.navigator.TwoWayNavigator;
 import org.yab.lemonsky.ui.pages.feed.FeedPage;
+import org.yab.lemonsky.ui.security.RoleChecker;
 
 import java.util.Collections;
 import java.util.List;
@@ -29,10 +32,12 @@ public class FeedsPanel extends Panel {
     private final long ITEMS_PER_PAGE = 10;
     private final int LETTERS_IN_PREVIEW = 100;
 
-    public FeedsPanel(String id, FeedRepository feedRepository) {
+    public FeedsPanel(String id, FeedRepository feedRepository, Roles roles) {
         super(id);
 
-        List<Feed> feeds = feedRepository.getAllFeeds();
+        List<Feed> feeds = (RoleChecker.isAdmin(roles))
+                ? feedRepository.getAllFeeds()
+                : feedRepository.getAllVisibleFeeds();
         Collections.reverse(feeds);
 
         WebMarkupContainer container = new WebMarkupContainer("dataContainer");
@@ -45,9 +50,9 @@ public class FeedsPanel extends Panel {
             protected void populateItem(Item<Feed> item) {
                 Feed feed = item.getModelObject();
                 String feedText = feed.getFeedText();
-                String displayedContent = feedText.length() > LETTERS_IN_PREVIEW ? feedText.substring(0, (LETTERS_IN_PREVIEW + 1)) : feedText;
-
-                String feedDate = feed.getFormattedDate();
+                String displayedContent = (feedText.length() > LETTERS_IN_PREVIEW)
+                        ? feedText.substring(0, (LETTERS_IN_PREVIEW + 1)) + "..."
+                        : feedText;
 
                 Link<Feed> feedLink = new StatelessLink<Feed>("feedLink") {
                     @Override
@@ -61,8 +66,13 @@ public class FeedsPanel extends Panel {
                 feedLink.add(new Label("title", new PropertyModel<>(feed, "title")));
                 feedLink.add(new Label("content-preview", Model.of(displayedContent))
                         .setEscapeModelStrings(false));
-                item.add(new Label("date", Model.of(feedDate)));
                 item.add(feedLink);
+
+                String feedDate = feed.getFormattedDate();
+                item.add(new Label("date", Model.of(feedDate)));
+
+//                Account author = feed.getAuthor();
+//                item.add(new Label("author", author.getFirstName() + " " + author.getLastName()));
             }
         };
         container.add(dataView);

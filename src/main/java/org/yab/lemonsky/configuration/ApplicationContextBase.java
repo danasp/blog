@@ -10,6 +10,7 @@ import org.springframework.core.io.ClassPathResource;
  */
 @Configuration
 @ComponentScan(basePackages = "org.yab.lemonsky")
+@Import(SecurityConfig.class)
 public class ApplicationContextBase {
 
     @Bean

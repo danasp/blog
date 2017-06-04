@@ -94,6 +94,19 @@
             <version>4.2.2.RELEASE</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>4.2.2.RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>4.2.2.RELEASE</version>
+        </dependency>
+
+
 
         <!-- db -->
         <dependency>
@@ -119,6 +132,14 @@
             <artifactId>liquibase-core</artifactId>
             <version>3.5.3</version>
         </dependency>
+
+        <!--Test-->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+        </dependency>
+
 
 
     </dependencies>

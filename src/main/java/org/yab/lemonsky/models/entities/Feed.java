@@ -28,13 +28,8 @@ public class Feed implements Serializable {
 
     private Date date;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "feed_comments",
-            joinColumns = @JoinColumn(name = "feed"),
-            inverseJoinColumns = @JoinColumn(name = "comment")
-    )
-    private List<Comment> comments;
+    private boolean visible;
+
 
     public Account getAuthor() {
         return author;
@@ -73,14 +68,6 @@ public class Feed implements Serializable {
         this.date = date;
     }
 
-    public List<Comment> getComments() {
-        return comments;
-    }
-
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
-    }
-
     public Long getId() {
         return id;
     }
@@ -89,14 +76,23 @@ public class Feed implements Serializable {
         this.id = id;
     }
 
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Feed{");
-        sb.append("author=").append(author);
+        sb.append("feedText='").append(feedText).append('\'');
+        sb.append(", id=").append(id);
+        sb.append(", author=").append(author);
         sb.append(", title='").append(title).append('\'');
-        sb.append(", text='").append(feedText).append('\'');
         sb.append(", date=").append(date);
-        sb.append(", comments=").append(comments);
+        sb.append(", visible=").append(visible);
         sb.append('}');
         return sb.toString();
     }

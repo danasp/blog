@@ -13,6 +13,6 @@ public class Index extends BasePage {
 
     public Index() {
         super();
-        add(new FeedsPanel("feeds", feedRepository));
+        add(new FeedsPanel("feeds", feedRepository, roles));
     }
 }

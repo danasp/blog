@@ -32,6 +32,13 @@ public class FeedRepositoryImpl implements FeedRepository {
     }
 
     @Override
+    public List<Feed> getAllVisibleFeeds() {
+        List<Feed> feeds = entityManager.createQuery("SELECT f FROM Feed AS f WHERE f.visible = true ORDER BY id")
+                .getResultList();
+        return (feeds == null) ? Collections.emptyList() : feeds;
+    }
+
+    @Override
     public Feed getFeedById(Long id) {
         return entityManager.find(Feed.class, id);
     }
@@ -48,7 +55,7 @@ public class FeedRepositoryImpl implements FeedRepository {
     @Override
     public Feed initComments(Feed feed) {
         Feed fromDb = getFeedById(feed.getId());
-        Hibernate.initialize(fromDb.getComments());
+//        Hibernate.initialize(fromDb.getComments());
         return fromDb;
     }
 }

@@ -4,8 +4,8 @@ import org.apache.wicket.authroles.authorization.strategies.role.Roles;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.link.StatelessLink;
 import org.apache.wicket.markup.html.panel.Panel;
-import org.yab.lemonsky.models.entities.Feed;
 import org.yab.lemonsky.ui.pages.Index;
+import org.yab.lemonsky.ui.pages.about_me.AboutMePage;
 import org.yab.lemonsky.ui.pages.add_feed.AddFeedPage;
 import org.yab.lemonsky.ui.pages.login.YabSignInPage;
 import org.yab.lemonsky.ui.security.RoleChecker;
@@ -52,7 +52,7 @@ public class NavigationPanel extends Panel {
         add(new StatelessLink("about") {
             @Override
             public void onClick() {
-                setResponsePage(Index.class);
+                setResponsePage(AboutMePage.class);
             }
         });
 

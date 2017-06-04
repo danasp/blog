@@ -10,6 +10,7 @@ import java.util.List;
  */
 public interface FeedRepository {
     List<Feed> getAllFeeds();
+    List<Feed> getAllVisibleFeeds();
     Feed getFeedById(Long id);
     void saveFeed(Feed feed);
     Feed initComments(Feed feed);

@@ -10,10 +10,11 @@ import java.util.Set;
  */
 @Entity
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = "username"))
+@SequenceGenerator(name = "seq_account", sequenceName = "account_generator", allocationSize = 1)
 public class Account {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(generator = "seq_account")
     private Long id;
 
     private String username;

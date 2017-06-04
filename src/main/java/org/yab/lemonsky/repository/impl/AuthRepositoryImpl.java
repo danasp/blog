@@ -2,6 +2,7 @@ package org.yab.lemonsky.repository.impl;
 
 import org.apache.wicket.authroles.authorization.strategies.role.Roles;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 import org.yab.lemonsky.models.entities.Account;
 import org.yab.lemonsky.repository.AuthRepository;
@@ -20,17 +21,15 @@ public class AuthRepositoryImpl implements AuthRepository {
     @Autowired
     EntityManager entityManager;
 
+    @Autowired
+    PasswordEncoder passwordEncoder;
+
     @Override
     public boolean yabSignIn(String username, String password) {
         Optional<Account> maybeAcc = getByUserName(username);
         if (maybeAcc.isPresent()) {
-            //TODO: password will be encrypted. Equals is not appropriate in this case.
-//            return maybeAcc.get().getPassword().equals(password);
-
-            if (maybeAcc.get().getPassword().equals(password)) {
-                return true;
-            }
-
+            String storedPassword = maybeAcc.get().getPassword();
+            return passwordEncoder.matches(password, storedPassword);
         }
 
         return false;
@@ -53,6 +52,6 @@ public class AuthRepositoryImpl implements AuthRepository {
                 .setParameter("username", username)
                 .getResultList();
 
-        return Optional.of(roles.isEmpty() ? null : new Roles(roles.get(0)));
+        return Optional.ofNullable(roles.isEmpty() ? null : new Roles(roles.get(0)));
     }
 }

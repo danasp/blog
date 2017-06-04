@@ -8,31 +8,32 @@
 <wicket:extend>
     <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
-    <header class="intro-header" style="background-image: url('../img/post-bg.jpg')">
+    <header class="intro-header" style="background-image: url('../img/about-bg.jpg')">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <div class="post-heading">
-                        <h1 wicket:id="title"/>
-                        <span class="meta">Увидело свет <span wicket:id="feedDate"/></span>
+                    <div class="page-heading">
+                        <h1>Обо мне</h1>
+                        <hr class="small">
+                        <span class="subheading">Немного</span>
                     </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Post Content -->
-    <article>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <span wicket:id="content"/>
-                </div>
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>Привет. Меня зовут Данила Верещаков.</p>
+                <p>Если есть вопросы - пиши на dvereschakov@mail.ru</p>
             </div>
         </div>
-    </article>
+    </div>
 
     <hr>
+
 
 </wicket:extend>
 </body>
